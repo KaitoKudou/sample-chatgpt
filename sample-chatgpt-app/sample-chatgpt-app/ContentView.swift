@@ -25,6 +25,7 @@ struct ContentView: View {
                 Button("send") {
                     viewModel.send()
                 }
+                .disabled(viewModel.text.isEmpty)
             }
             .padding()
         }
@@ -32,6 +33,7 @@ struct ContentView: View {
         .onAppear {
             viewModel.setup()
         }
+        .overlayLoading(isLoading: viewModel.isLoading)
     }
 }
 
